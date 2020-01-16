@@ -2,6 +2,7 @@ package com.ktpm.pet.controller;
 
 
 import com.ktpm.pet.model.Accessories;
+import com.ktpm.pet.model.Advertisement;
 import com.ktpm.pet.model.NewsTeaser;
 import com.ktpm.pet.model.PetFoodTip;
 import com.ktpm.pet.service.PetService;
@@ -30,7 +31,11 @@ public class PetController {
         return petService.createPetFoodTip(petFoodTip);
     }
 
-    @GetMapping(path = "/accessories/{id}")
+    @PostMapping(path = "/advertisements")
+    public ResponseEntity<Object> createAdvertisement(@RequestBody Advertisement advertisement){
+        return petService.createAdvertisement(advertisement);
+    }
+        @GetMapping(path = "/accessories/{id}")
     public ResponseEntity<Object> findAccessoriesByID(@PathVariable Integer id){
         return petService.findAccessoriesById(id);
     }
@@ -44,4 +49,30 @@ public class PetController {
     public ResponseEntity<Object> findPetFoodTipByID(@PathVariable Integer id){
         return petService.findPetFoodTipById(id);
     }
+
+    @GetMapping(path = "/advertisements/{id}")
+    public ResponseEntity<Object> findAdvertisementById(@PathVariable Integer id){
+        return petService.findAdvertisementById(id);
+    }
+
+    @GetMapping(path = "/accessories")
+    public ResponseEntity<Object> findAllAccessories(){
+        return petService.findAllAccessories();
+    }
+
+    @GetMapping(path = "/pet-food-tips")
+    public ResponseEntity<Object> findAllPetFoodTips(){
+        return petService.findAllPetFoodTip();
+    }
+
+    @GetMapping(path = "/news-teasers")
+    public ResponseEntity<Object> findAllNewsTeaser(){
+        return petService.findAllNewsTeaser();
+    }
+
+    @GetMapping(path = "/advertisements")
+    public ResponseEntity<Object> findAllAdvertisement(){
+        return petService.findAllAdvertisement();
+    }
+
 }
